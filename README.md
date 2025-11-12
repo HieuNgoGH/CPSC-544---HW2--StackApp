@@ -5,7 +5,7 @@ The Push Value user story enables users to add single-digit values (0–9) to a 
 Each operation provides immediate feedback and displays the current stack state. 
 The system enforces a maximum stack size of three elements and prevents overflow gracefully, ensuring reliability and clarity for end users.
 ## Implementation Summary
-- **Architecture**: Minimal MVVM-inspired design with Activity (UI), SimpleStack (logic), and optional ViewModel.
+- **Architecture**: Minimal Array-Based (MVVM-inspired) design with Activity (UI), SimpleStack (logic), and optional ViewModel.
 - **Core Features**:
   - Accepts input in the format `push N` where N ∈ [0–9].
   - Validates input and enforces stack size limit.
