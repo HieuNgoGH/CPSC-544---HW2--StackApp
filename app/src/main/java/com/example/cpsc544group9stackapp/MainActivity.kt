@@ -41,10 +41,17 @@ class MainActivity : AppCompatActivity() {
                     // Check if number is in valid range (0-9)
                     // Feature: As a player, I want to be able to add only integers 0-9
                     if (number in 0..9) {
-                        stack.push(number)
-                        binding.editTextNumber.text.clear()
-                        updateStackDisplay()
-                        Toast.makeText(this, "Pushed: $number", Toast.LENGTH_SHORT).show()
+                        // Check if stack has room for more items (max 3 items)
+                        // Feature: As a player, I want the StackApp to hold only 3 integers max at a time
+                        if (stack.size < 3) {
+                            stack.push(number)
+                            binding.editTextNumber.text.clear()
+                            updateStackDisplay()
+                            Toast.makeText(this, "Pushed: $number", Toast.LENGTH_SHORT).show()
+                        } else {
+                            // Display error message when stack is full (already has 3 items)
+                            Toast.makeText(this, "Stack is full! Maximum 3 items allowed. Pop an item first.", Toast.LENGTH_SHORT).show()
+                        }
                     } else {
                         // Display error message for out of range values
                         Toast.makeText(this, "Please enter a number between 0 and 9", Toast.LENGTH_SHORT).show()
