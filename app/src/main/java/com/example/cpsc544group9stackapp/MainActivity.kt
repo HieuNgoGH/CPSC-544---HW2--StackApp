@@ -31,15 +31,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupButtons() {
         // Push button - adds number to stack
+        // Validation: Only accepts integers 0-9
         binding.btnPush.setOnClickListener {
             val input = binding.editTextNumber.text.toString()
             if (input.isNotEmpty()) {
                 try {
                     val number = input.toInt()
-                    stack.push(number)
-                    binding.editTextNumber.text.clear()
-                    updateStackDisplay()
-                    Toast.makeText(this, "Pushed: $number", Toast.LENGTH_SHORT).show()
+
+                    // Check if number is in valid range (0-9)
+                    // Feature: As a player, I want to be able to add only integers 0-9
+                    if (number in 0..9) {
+                        stack.push(number)
+                        binding.editTextNumber.text.clear()
+                        updateStackDisplay()
+                        Toast.makeText(this, "Pushed: $number", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Display error message for out of range values
+                        Toast.makeText(this, "Please enter a number between 0 and 9", Toast.LENGTH_SHORT).show()
+                    }
                 } catch (e: NumberFormatException) {
                     Toast.makeText(this, "Please enter a valid number", Toast.LENGTH_SHORT).show()
                 }

@@ -14,5 +14,5 @@
 .cxx
 local.properties
 
-# Exclude Claude Code files
-.claude/
+# Personal development notes (local only)
+README.md
