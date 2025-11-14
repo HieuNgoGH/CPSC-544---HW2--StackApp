@@ -7,17 +7,64 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnQuit"
-        android:layout_width="wrap_content"
+    <!-- TextView to display the current stack contents -->
+    <TextView
+        android:id="@+id/stackView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Quit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#EFEFEF"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="[]"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.751" />
+        tools:text="Stack: [1, 2, 3]" />
+
+    <!-- TextView to display status messages -->
+    <TextView
+        android:id="@+id/messageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Status messages appear here"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stackView" />
+
+    <!-- Input Field for commands -->
+       <EditText
+           android:id="@+id/inputField"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="16dp"
+           android:autofillHints=""
+           android:hint="Enter command (e.g., push 5)"
+           android:inputType="text"
+           android:padding="12dp"
+           android:textSize="16sp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/messageView" />
+
+    <!-- Group buttons in a horizontal chain for better alignment -->
+    <Button
+        android:id="@+id/btnPush"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Push"
+        app:layout_constraintEnd_toStartOf="@+id/btnPop"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputField" />
+
 
     <Button
         android:id="@+id/btnPop"
@@ -31,40 +78,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.554" />
 
-    <TextView
-        android:id="@+id/stackDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stack Placeholder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195" />
-
+    <!-- Quit Button at the bottom -->
     <Button
-        android:id="@+id/btnPush"
+        android:id="@+id/btnQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Push"
+        android:layout_marginBottom="32dp"
+        android:text="Quit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.554" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.381" />
 </androidx.constraintlayout.widget.ConstraintLayout>
