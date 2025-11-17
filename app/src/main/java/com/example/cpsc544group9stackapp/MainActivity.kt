@@ -47,10 +47,9 @@ class MainActivity : AppCompatActivity() {
                             stack.push(number)
                             binding.editTextNumber.text.clear()
                             updateStackDisplay()
-                            Toast.makeText(this, "Pushed: $number", Toast.LENGTH_SHORT).show()
-                        } else {
-                            // Display error message when stack is full (already has 3 items)
-                            Toast.makeText(this, "Stack is full! Maximum 3 items allowed. Pop an item first.", Toast.LENGTH_SHORT).show()
+                        }
+                        else if (stack.size == 3) {
+                                updateStackDisplay()
                         }
                     } else {
                         // Display error message for out of range values
@@ -69,7 +68,6 @@ class MainActivity : AppCompatActivity() {
             if (stack.isNotEmpty()) {
                 val poppedValue = stack.pop()
                 updateStackDisplay()
-                Toast.makeText(this, "Popped: $poppedValue", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Stack is empty", Toast.LENGTH_SHORT).show()
             }
@@ -84,7 +82,13 @@ class MainActivity : AppCompatActivity() {
     private fun updateStackDisplay() {
         if (stack.isEmpty()) {
             binding.stackDisplay.text = "Stack is empty"
-        } else {
+        }
+        else if (stack.size == 3) {
+            binding.stackDisplay.text = "Stack is full\n${stack.reversed().joinToString(separator = "\n")}"
+            Toast.makeText(this, "Stack is full! Maximum 3 items allowed. Pop an item first.", Toast.LENGTH_SHORT).show()
+
+        }
+        else {
             // Display stack from top to bottom
             binding.stackDisplay.text = "Stack (top to bottom):\n${stack.reversed().joinToString("\n")}"
         }
