@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
                             stack.push(number)
                             binding.editTextNumber.text.clear()
                             updateStackDisplay()
+                            // Feature: Notify user when number is pushed
+                            Toast.makeText(this, "Number $number pushed to stack", Toast.LENGTH_SHORT).show()
                         }
                         else if (stack.size == 3) {
                                 updateStackDisplay()
@@ -68,6 +70,8 @@ class MainActivity : AppCompatActivity() {
             if (stack.isNotEmpty()) {
                 val poppedValue = stack.pop()
                 updateStackDisplay()
+                // Feature: Notify user when number is popped
+                Toast.makeText(this, "Number $poppedValue popped from stack", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Stack is empty", Toast.LENGTH_SHORT).show()
             }
